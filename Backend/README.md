@@ -33,3 +33,35 @@ Returns the created user and an authentication token.
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
+
+# /user/login Endpoint Documentation
+
+## Description
+The **/user/login** endpoint allows an existing user to log in. It validates the user credentials and returns an authentication token along with the user object.
+
+## HTTP Method
+**POST**
+
+## Request Body
+- `email` (string): Required, must be a valid email format.
+- `password` (string): Required, minimum 6 characters.
+
+## Responses
+
+### Success (200)
+Returns the user information and an authentication token.
+
+### Example response
+```json
+{
+  "user": {
+    "id": "12345",
+    "fullname": {
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "email": "john.doe@example.com"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```

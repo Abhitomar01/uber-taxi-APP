@@ -65,3 +65,54 @@ Returns the user information and an authentication token.
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
+
+# /user/profile Endpoint Documentation
+
+## Description
+The **/user/profile** endpoint retrieves the profile of the authenticated user.
+
+## HTTP Method
+**GET**
+
+## Headers
+- `Authorization` (string): Required, Bearer token.
+
+## Responses
+
+### Success (200)
+Returns the user profile information.
+
+### Example response
+```json
+{
+  "id": "12345",
+  "fullname": {
+    "firstname": "John",
+    "lastname": "Doe"
+  },
+  "email": "john.doe@example.com"
+}
+```
+
+# /user/logout Endpoint Documentation
+
+## Description
+The **/user/logout** endpoint logs out the authenticated user by invalidating the authentication token.
+
+## HTTP Method
+**GET**
+
+## Headers
+- `Authorization` (string): Required, Bearer token.
+
+## Responses
+
+### Success (200)
+Returns a message indicating successful logout.
+
+### Example response
+```json
+{
+  "message": "logged out successfully"
+}
+```

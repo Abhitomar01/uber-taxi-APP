@@ -116,3 +116,48 @@ Returns a message indicating successful logout.
   "message": "logged out successfully"
 }
 ```
+
+# /captain/register Endpoint Documentation
+
+## Description
+The **/captain/register** endpoint allows a new captain to register. It accepts captain details and returns the created captain object.
+
+## HTTP Method
+**POST**
+
+## Request Body
+- `fullname`: An object containing:
+  - `firstname` (string): Required, minimum 3 characters.
+  - `lastname` (string): Required, minimum 3 characters.
+- `email` (string): Required, must be a valid email format.
+- `password` (string): Required, minimum 6 characters.
+- `vehical`: An object containing:
+  - `color` (string): Required, minimum 3 characters.
+  - `plate` (string): Required, minimum 3 characters.
+  - `capacity` (number): Required, minimum 1.
+  - `vehicaltype` (string): Required, must be one of ['car', 'bike', 'auto'].
+
+## Responses
+
+### Success (201)
+Returns the created captain object.
+
+### Example response
+```json
+{
+  "captain": {
+    "id": "67890",
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com",
+    "vehical": {
+      "color": "red",
+      "plate": "XYZ123",
+      "capacity": 4,
+      "vehicaltype": "car"
+    }
+  }
+}
+```

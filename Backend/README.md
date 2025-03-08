@@ -126,16 +126,22 @@ The **/captain/register** endpoint allows a new captain to register. It accepts 
 **POST**
 
 ## Request Body
-- `fullname`: An object containing:
-  - `firstname` (string): Required, minimum 3 characters.
-  - `lastname` (string): Required, minimum 3 characters.
-- `email` (string): Required, must be a valid email format.
-- `password` (string): Required, minimum 6 characters.
-- `vehical`: An object containing:
-  - `color` (string): Required, minimum 3 characters.
-  - `plate` (string): Required, minimum 3 characters.
-  - `capacity` (number): Required, minimum 1.
-  - `vehicaltype` (string): Required, must be one of ['car', 'bike', 'auto'].
+```json
+{
+  "fullname": {
+    "firstname": "Jane", // Required, minimum 3 characters
+    "lastname": "Doe" // Required, minimum 3 characters
+  },
+  "email": "jane.doe@example.com", // Required, must be a valid email format
+  "password": "password123", // Required, minimum 6 characters
+  "vehical": {
+    "color": "red", // Required, minimum 3 characters
+    "plate": "XYZ123", // Required, minimum 3 characters
+    "capacity": 4, // Required, minimum 1
+    "vehicaltype": "car" // Required, must be one of ['car', 'bike', 'auto']
+  }
+}
+```
 
 ## Responses
 
@@ -158,6 +164,106 @@ Returns the created captain object.
       "capacity": 4,
       "vehicaltype": "car"
     }
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+# /captain/login Endpoint Documentation
+
+## Description
+The **/captain/login** endpoint allows an existing captain to log in. It validates the captain credentials and returns an authentication token along with the captain object.
+
+## HTTP Method
+**POST**
+
+## Request Body
+```json
+{
+  "email": "jane.doe@example.com", // Required, must be a valid email format
+  "password": "password123" // Required, minimum 6 characters
+}
+```
+
+## Responses
+
+### Success (200)
+Returns the captain information and an authentication token.
+
+### Example response
+```json
+{
+  "captain": {
+    "id": "67890",
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com",
+    "vehical": {
+      "color": "red",
+      "plate": "XYZ123",
+      "capacity": 4,
+      "vehicaltype": "car"
+    }
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+# /captain/profile Endpoint Documentation
+
+## Description
+The **/captain/profile** endpoint retrieves the profile of the authenticated captain.
+
+## HTTP Method
+**GET**
+
+## Headers
+- `Authorization` (string): Required, Bearer token.
+
+## Responses
+
+### Success (200)
+Returns the captain profile information.
+
+### Example response
+```json
+{
+  "id": "67890",
+  "fullname": {
+    "firstname": "Jane",
+    "lastname": "Doe"
+  },
+  "email": "jane.doe@example.com",
+  "vehical": {
+    "color": "red",
+    "plate": "XYZ123",
+    "capacity": 4,
+    "vehicaltype": "car"
   }
+}
+```
+
+# /captain/logout Endpoint Documentation
+
+## Description
+The **/captain/logout** endpoint logs out the authenticated captain by invalidating the authentication token.
+
+## HTTP Method
+**GET**
+
+## Headers
+- `Authorization` (string): Required, Bearer token.
+
+## Responses
+
+### Success (200)
+Returns a message indicating successful logout.
+
+### Example response
+```json
+{
+  "message": "logout successfully"
 }
 ```

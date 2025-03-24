@@ -10,25 +10,21 @@ const LiveTracking = () => {
   const [currentLocation, setCurrentLocation] = useState({ lat: 37.7749, lng: -122.4194 })
 
   useEffect(() => {
-    const updatePosition = () => {
-      navigator.geolocation.getCurrentPosition(
+    if (navigator.geolocation) {
+      const watchId = navigator.geolocation.watchPosition(
         (position) => {
           setCurrentLocation({
             lat: position.coords.latitude,
-            lng: position.coords.longitude
+            lng: position.coords.longitude,
           });
         },
-        (error) => console.error(error)
+        (error) => console.error(error),
+        { enableHighAccuracy: true }
       );
-    };
-    
-    // Fetch initial position
-    updatePosition();
-    
-    // Update position every 10 seconds
-    const intervalId = setInterval(updatePosition, 10000);
-    
-    return () => clearInterval(intervalId);
+      return () => navigator.geolocation.clearWatch(watchId);
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
   }, []);
 
   return (

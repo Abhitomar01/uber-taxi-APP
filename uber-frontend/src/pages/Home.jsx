@@ -213,7 +213,7 @@ const Home = () => {
       />
 
       {/* Map */}
-      <div className="h-screen">
+      <div className="h-screen relative z-[-1]">
         <LiveTracking/>
       </div>
 

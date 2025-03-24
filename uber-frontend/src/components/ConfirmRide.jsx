@@ -2,7 +2,7 @@ import React from 'react'
 
 const ConfirmRide = (props) => {
   return (
-    <div>
+    <div className='h-[90%]' >
         <h5
        onClick={()=>{
         props.setConfirmRidePanel(false)
@@ -13,10 +13,10 @@ const ConfirmRide = (props) => {
        <img className='h-20' src="https://www.pngplay.com/wp-content/uploads/8/Uber-PNG-Photos.png" alt="" />
       <div className='w-full mt-5'>
         <div className='flex items-center gap-5 p-3 border-b-2'>
-        <i className=" text-lgri-map-pin-user-fill"></i>
+        <i className=" text-lg ri-map-pin-user-fill"></i>
         <div className=''>
             <h3 className='text-lg font-medium'>563 /11-B</h3>
-            <p className='text-base -mt-1 text-gray-600'>kankar kheda meerut uttarPardesh</p>
+            <p className='text-base -mt-1 text-gray-600'>{props.pickup}</p>
         </div>
 
         </div>
@@ -24,13 +24,13 @@ const ConfirmRide = (props) => {
         <i className=" text-lg ri-map-pin-fill "></i>
         <div className=''>
             <h3 className='text-lg font-medium'>563 /11-B</h3>
-            <p className='text-base -mt-1 text-gray-600'>kankar kheda meerut uttarPardesh</p>
+            <p className='text-base -mt-1 text-gray-600'>{props.destination}</p>
         </div>
         </div>
         <div className='flex items-center gap-5 p-3 '>
         <i className=" text-lg ri-currency-line"></i>
         <div className=''>
-            <h3 className='text-lg font-medium'> 193.20</h3>
+            <h3 className='text-lg font-medium'>₹{props.fare[props.vehicleType]}</h3>
             <p className='text-base -mt-1 text-gray-600'>Cash Cash</p>
         </div>
         
@@ -39,7 +39,8 @@ const ConfirmRide = (props) => {
       <button onClick={()=>{
         props.setVehicalFound(true)
         props.setConfirmRidePanel(false)
-      }} className='w-full bg-green-500 text-white font-semibold p-2 rounded-lg mt-5'>Confirm</button>
+        props.createRide()
+      }} className='w-full bg-green-500 text-white font-semibold p-2 rounded-lg'>Confirm</button>
        </div>
     </div>
   )

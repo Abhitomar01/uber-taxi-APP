@@ -138,7 +138,7 @@ const Captainsignup = () => {
           </form>
           </div>
           <div>
-            <p className='text-xs'>By proceeding, you consent to get call ,whatsapp and SMS ,Message including by automated means , from Uber and Its artifilates to the number provided</p>
+            <p className='text-xs mt-6'>By proceeding, you consent to get call ,whatsapp and SMS ,Message including by automated means , from Uber and Its artifilates to the number provided</p>
           </div>
         </div>
   )

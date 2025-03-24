@@ -50,8 +50,17 @@ module.exports.loginCaptain = async (req, res) => {
     res.status(200).json({ token, captain })
 }
 module.exports.getCaptainProfile = async (req, res) => {
-    res.status(200).json(req.captain)
-}
+    try {
+        if (!req.captain) {
+            return res.status(404).json({ msg: 'Captain not found' });
+        }
+        res.status(200).json(req.captain);
+    } catch (error) {
+        console.error("Get Profile Error:", error);
+        res.status(500).json({ error: 'Server Error' });
+    }
+};
+
 
 
 module.exports.logoutCaptain = async (req, res) => {

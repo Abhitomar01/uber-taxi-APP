@@ -1,33 +1,38 @@
-import React from 'react'
+import React from 'react';
 
-const LocationSerachPanel = (props) => {
+const LocationSearchPanel = ({ locations = [], setVehicalPanel, setPanelOpen, onSelectLocation }) => {
+  const handleLocationSelect = (location) => {
+   // setVehicalPanel(true);
+    //setPanelOpen(false);
+    onSelectLocation(location); // ✅ Pass selected location back to parent
+  };
 
-  //sample array for location
-  const locations =[
-    '24B,Near Begampul,Meerut,uttarPardesh',
-    '29C,Near meerut college,Meerut,uttarPardesh',
-    '11B,Near surajkund park,Meerut,uttarPardesh',
-    '16D,Near modi mandir,Modinagar,uttarPardesh',
-    '10A,Near Yasodha Hospital,Ghaziabad,uttarPardesh',
-    '12A,Near Raj nagar Extension,Ghaziabad,uttarPardesh'
-  ]
   return (
     <div>
-      {
-        locations.map(function(elem,idx){
-          return <div key={idx} onClick={()=>{
-            props.setVehicalPanel(true)
-            props.setPanelOpen(false)
-          }} className="flex gap-4 active:border-black border-2 border-white p-3 rounded-xl justify-start my-2 items-center">
-          <h2 className='bg-[#eee] h-10 w-10 flex items-center justify-center rounded-full'><i className="ri-map-pin-fill "></i></h2>
-          <h4 className='font-medium'>
-            {elem}
-          </h4>
-        </div>
-        })
-      }
-    </div>
-  )
-}
+      {locations?.map((elem, idx) => (
+        <div 
+          key={idx} 
+          onClick={() => handleLocationSelect(elem)} 
+          className="flex gap-4 active:border-black border-2 border-white p-3 rounded-xl justify-start my-2 items-center cursor-pointer"
+        >
+          {/* Icon */}
+          <h2 className='bg-[#eee] h-10 w-10 flex items-center justify-center rounded-full'>
+            <i className="ri-map-pin-fill"></i>
+          </h2>
 
-export default LocationSerachPanel
+          {/* ✅ Display structured data */}
+          <div>
+            <h4 className='font-medium'>
+              {elem?.structured_formatting?.main_text || 'Unknown Location'}
+            </h4>
+            <p className='text-gray-500 text-sm'>
+              {elem?.structured_formatting?.secondary_text || ''}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default LocationSearchPanel;

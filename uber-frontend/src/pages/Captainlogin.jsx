@@ -33,7 +33,7 @@ const Captainlogin = () => {
   return (
     <div className='p-7 flex flex-col justify-between h-screen'>
       <div>
-      <img className="w-20 mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSVCO4w_adxK32rCXFeKq3_NbLcR9b_js14w&s" alt="" />
+      <img className="w-20 mb-4" src="/uba-logo2.png" alt="" />
       <form onSubmit={(e)=>{submitHandler(e)}}>
       <h3 className='text-lg font-medium mb-2 '>What's your email</h3>
       <input className='bg-[#eeeeee] mb-7 rounded px-2 py-2 border w-full text-lg placeholder:text-base' 

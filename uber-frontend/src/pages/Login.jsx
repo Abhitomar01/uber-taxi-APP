@@ -39,7 +39,7 @@ const Login = () => {
       <div>
         <img
           className="w-16 mb-10"
-          src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png"
+          src="/uba-logo2.png"
           alt=""
         />
         <form

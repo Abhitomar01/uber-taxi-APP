@@ -34,7 +34,7 @@ const CaptainRiding = () => {
       <div className="fixed p-6 top-0 flex items-center justify-between w-full">
         <img
           className="w-16"
-          src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png"
+          src="/uba-logo2.png"
           alt=""
         />
         <Link

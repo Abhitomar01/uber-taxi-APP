@@ -57,7 +57,7 @@ const Captainsignup = () => {
   return (
      <div className='py-5 px-5 flex flex-col justify-between h-screen'>
           <div>
-          <img className="w-20 mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSVCO4w_adxK32rCXFeKq3_NbLcR9b_js14w&s" alt="" />
+          <img className="w-20 mb-4" src="/uba-logo2.png" alt="" />
           <form onSubmit={(e)=>{submitHandler(e)}}>
     
           <h3 className='text-lg font-medium mb-2'>What's your name</h3>

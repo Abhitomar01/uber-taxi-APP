@@ -62,7 +62,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             required
-            type="text"
+            type="password"
             placeholder="Password"
           />
           <button className="bg-[#111]  text-white font-semibold mb-3 rounded px-2 py-2 border w-full text-lg placeholder:text-base">
